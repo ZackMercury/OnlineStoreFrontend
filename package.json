@@ -1,0 +1,18 @@
+{
+  "name": "websiteproject",
+  "version": "0.0.1",
+  "description": "webpack typescript project template",
+  "main": "index.ts",
+  "scripts": {
+    "test": "webpack build --mode=development "
+  },
+  "author": "ZackMercury",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/core": "^7.17.10",
+    "@babel/preset-env": "^7.17.10",
+    "@babel/preset-react": "^7.16.7",
+    "@babel/preset-typescript": "^7.16.7",
+    "webpack": "^5.72.0"
+  }
+}
