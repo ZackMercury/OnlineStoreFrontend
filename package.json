@@ -2,9 +2,11 @@
   "name": "websiteproject",
   "version": "0.0.1",
   "description": "webpack typescript project template",
-  "main": "index.ts",
+  "main": "index.tsx",
   "scripts": {
-    "test": "webpack build --mode=development "
+    "test": "npm run copyfiles && webpack build --mode=development ",
+
+    "copyfiles": "copy /B /Y /V \"%cd%\\src\\index.html\" \"%cd%\\dst\\index.html\""
   },
   "author": "ZackMercury",
   "license": "ISC",

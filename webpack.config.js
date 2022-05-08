@@ -1,6 +1,6 @@
 const path = require("path");
 module.exports = {
-    entry: './src/index.ts',
+    entry: './src/index.tsx',
     
     output: {
         path: path.resolve(__dirname, "dst"),
@@ -26,7 +26,7 @@ module.exports = {
                                 }
                             ],
                             "@babel/preset-typescript",
-                            "@babel/preset-react"
+                            ["@babel/preset-react", { runtime: "automatic" }]
                         ]
                     }
                 }
