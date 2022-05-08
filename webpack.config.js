@@ -1,6 +1,8 @@
 const path = require("path");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
+const mode = process.argv.filter((str)=>str.includes("--mode"))[0].split("=")[1];
+
 module.exports = {
     entry: './src/index.tsx',
     
@@ -37,7 +39,7 @@ module.exports = {
             {
                 test: /\.s?css$/,
                 use: [
-                    process.env.MODE_ENV !== "production" ? "style-loader" : MiniCssExtractPlugin.loader,
+                    mode !== "production" ? "style-loader" : MiniCssExtractPlugin.loader,
                     "css-loader",
                     {
                         loader: "sass-loader",
