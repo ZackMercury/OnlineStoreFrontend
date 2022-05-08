@@ -54,6 +54,13 @@ module.exports = {
     resolve: {
         extensions: [".js", ".jsx", ".ts", ".tsx"]
     },
+    devServer: {
+        static: {
+            directory: path.join(__dirname, "dst")
+        },
+        compress: false,
+        port: 80
+    },
     plugins: [
         new MiniCssExtractPlugin({
             filename: 'bundle.css'
