@@ -1,11 +1,10 @@
 import React from "react";
 import "./App.scss";
 
-export default class App extends React.Component {
+export default function App () {
     
-    render() {
-        return  <div id="App">
-            Hello world
-        </div>
-    }
+
+    return  <div id="App">
+        Hello world
+    </div>
 }
