@@ -1,8 +1,18 @@
 
 .Header {
     width: auto;
-    height: 150px;
+    height: 100px;
     background-color: black;
     font-size: x-large;
     color: white;
+    background-image: url("../images/HeaderBG.png");
+    background-position-x: right;
+    background-repeat: no-repeat;
+
+    overflow: hidden;
+}
+
+#icon {
+    margin-left: 50px;
+    margin-right: auto;
 }

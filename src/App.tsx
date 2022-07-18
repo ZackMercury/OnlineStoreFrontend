@@ -12,7 +12,7 @@ export default function App (props) {
 
     return  <BrowserRouter>
                 <div className="App">
-                    <Header title="Hello, store!" icon="./images/icon.svg"/>
+                    <Header title="AllIncluded Grocery Chain" icon="./images/icon.svg"/>
                     <Nav />
                     <Main>
                         <Routes>

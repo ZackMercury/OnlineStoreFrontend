@@ -4,8 +4,7 @@
   "description": "Test assignment for a JavaScript developer at ThinkMobiles",
   "main": "index.tsx",
   "scripts": {
-    "start": "npm run copyfiles && webpack serve --mode=development ",
-    "copyfiles": "copy /B /Y /V \"%cd%\\src\\index.html\" \"%cd%\\dst\\index.html\""
+    "start": "webpack serve --mode=development"
   },
   "author": "ZackMercury",
   "license": "ISC",
@@ -17,6 +16,7 @@
     "@types/react": "^18.0.9",
     "@types/react-dom": "^18.0.3",
     "babel-loader": "^8.2.5",
+    "copy-webpack-plugin": "^11.0.0",
     "css-loader": "^6.7.1",
     "mini-css-extract-plugin": "^2.6.0",
     "sass-loader": "^12.6.0",
