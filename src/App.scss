@@ -1,5 +1,7 @@
+@import url("./app/global-style.scss");
+
 $blue: #eb0bff;
 
-#App {
+.App {
     background-color: $blue;
 }
