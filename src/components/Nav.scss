@@ -1,5 +1,11 @@
 .Nav {
     background-color: #ff057a;
     width: auto;
-    height: 60px;
+    font-size: small;
+    line-height: 22px;
+    min-height: 25px;
+}
+
+.Nav a {
+    color: white;
 }

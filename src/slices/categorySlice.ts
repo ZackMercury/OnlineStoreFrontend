@@ -5,7 +5,7 @@ const initialState:
 {
     value: string[]
 } = {
-    value: []
+    value: ["Household items", "Bathroom"]
 }
 
 export const loadingSlice = createSlice({
