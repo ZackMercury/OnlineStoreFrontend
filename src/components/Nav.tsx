@@ -7,6 +7,7 @@ import "./Nav.scss";
 export default function Nav (props) {
     const category = useSelector((state:RootState) => state.category.value);
 
+    // TODO tree loading
     const [tree, setTree] = useState({});
 
     return <nav className="Nav">

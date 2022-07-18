@@ -17,7 +17,7 @@ export default function App (props) {
                     <Main>
                         <Routes>
                             <Route path="/">
-                                
+                                // TODO Page loading
                             </Route>
                         </Routes>
                     </Main>
