@@ -17,9 +17,12 @@ export default function ViewItemPage () {
 
     useEffect(() => {
         // Component did mount
+        document.title = "Item View";
+
         setLoading(true);
         axios.get(SERVER_LINK + "/item/" + itemID)
         .then((res) => {
+            document.title = res.data.name;
             setItemData(res.data);
             setLoading(false);
             dispatch(setCategory(["All items"].concat(res.data.category)));
@@ -33,6 +36,19 @@ export default function ViewItemPage () {
             dispatch(setUser({
                 ...userData,
                 favorites: [...(userData.favorites as string[]), itemID as string]
+            }));
+        })
+    }
+
+    const removeFromFavorites = () => {
+        const favs = userData.favorites!.concat();
+        favs.splice(favs.indexOf(itemID!), 1);
+        axios.patch(SERVER_LINK + "/removefavorite", {
+            itemID
+        }).then((res) => {
+            dispatch(setUser({
+                ...userData,
+                favorites: favs
             }));
         })
     }
@@ -52,7 +68,7 @@ export default function ViewItemPage () {
                 {
                     (Object.keys(userData).length && userData.favorites!.indexOf(itemID as string) < 0 )? 
                     <button onClick={addToFavorites} type="button" className="btn btn-primary">Add to favorites</button> :
-                    ""
+                    <button onClick={removeFromFavorites} type="button" className="btn btn-primary">Remove from favorites</button>
                 }
                 
             </>

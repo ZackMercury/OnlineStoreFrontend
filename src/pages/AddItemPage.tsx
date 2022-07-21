@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { RootState } from "../app/store";
@@ -24,6 +24,10 @@ export default function AddItemPage () {
     const [description, setDescription] = useState("");
     const [category, setCategory] = useState("");
     const [technicalDetails, setTechnicalDetails] = useState("");
+
+    useEffect(() => {
+        document.title = "Add a new item";
+    }, []);
 
     const onHitSubmit = (e: React.MouseEvent<HTMLButtonElement>) => {
         e.preventDefault();

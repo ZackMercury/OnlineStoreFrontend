@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Joi from 'joi-browser';
 import axios from "axios";
 import { SERVER_LINK } from "../app/constants";
@@ -18,6 +18,10 @@ export default function LoginPage () {
     const alertBox = useRef<HTMLDivElement>(null);
     const navigate = useNavigate();
     const dispatch = useDispatch();
+
+    useEffect(() => {
+        document.title = "Login - AllIncluded";
+    }, []);
 
     const onHitSubmit = (e:React.MouseEvent<HTMLButtonElement>) => {
         e.preventDefault();

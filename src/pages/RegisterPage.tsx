@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Joi from 'joi-browser';
 import axios from "axios";
 import { SERVER_LINK } from "../app/constants";
@@ -26,6 +26,10 @@ export default function RegisterPage () {
     const [lastname, setLastname] = useState("");
     const [phone, setPhone] = useState("");
     const [address, setAddress] = useState("");
+
+    useEffect(() => {
+        document.title = "Register - AllIncluded";
+    }, []);
 
     const onHitSubmit = (e: React.MouseEvent<HTMLButtonElement>) => {
         e.preventDefault();

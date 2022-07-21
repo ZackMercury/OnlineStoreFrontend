@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { RootState } from "../app/store";
@@ -19,6 +19,10 @@ export default function ItemsPage () {
     const [sortByField, setSortByField] = useState("");
     const [sortField, setSortField] = useState("");
     
+    useEffect(() => {
+        document.title = "AllIncluded - Items";
+    }, []);
+
     const onChangePage = (page) => {
         window.history.replaceState(null, "Items - page " + (page + 1), "/items/" + (page + 1))
     };

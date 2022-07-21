@@ -12,6 +12,9 @@ export default function ManageUsersPage () {
 
     useEffect(() => {
         // Component did mount
+
+        document.title = "Users control panel";
+
         if (!isAdmin) {
             setLoading(false);
             return;

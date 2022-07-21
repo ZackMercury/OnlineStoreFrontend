@@ -32,6 +32,8 @@ export default function EditItemPage () {
 
     useEffect(()=>{
         // Component did mount
+        document.title = "Edit item";
+
         // Let's load the current item info
 
         setLoading(true);

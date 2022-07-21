@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { RootState } from "../app/store";
@@ -6,6 +6,10 @@ import Items from "../components/items/Items";
 
 export default function HomePage () { 
     const user = useSelector((state: RootState) => state.user.value);
+
+    useEffect(() => {
+        document.title = "AllIncluded - Home"
+    }, []);
 
     return <div className="HomePage">
         <Items perPage={3}/>
