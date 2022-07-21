@@ -8,11 +8,33 @@
     background-image: url("../images/HeaderBG.png");
     background-position-x: right;
     background-repeat: no-repeat;
-
+    display: flex;
+    justify-content: left;
     overflow: hidden;
+    flex-direction: row;
+}
+
+.headerData {
+    display: flex;
+    height: inherit;
+    vertical-align: middle;
 }
 
 #icon {
-    margin-left: 50px;
-    margin-right: auto;
+    display: inline-block;
+}
+
+.headerTitle {
+    margin-top: auto;
+    margin-bottom: auto;
+    height: min-content;
+    display: inline-block;
+}
+
+.loginInfo {
+    background-color: black;
+    align-self: flex-start;
+    margin-left: auto;
+    margin-right: 5px;
+    font-size: small;
 }

@@ -1,0 +1,50 @@
+
+
+.Item {
+    margin-top: 5px;
+    width: 100px;
+    height: 150px;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+
+    font-size: small;
+    margin-left: 5px;
+    background-color: white;
+    cursor: pointer;
+}
+
+.Item:hover {
+    overflow: visible;
+}
+
+.smallPadded {
+    margin: 0 5px;
+    text-align: justify;
+}
+
+.picture {
+    width: 100px;
+    height: 100px;
+    background-size: contain;
+    background-repeat: no-repeat;
+
+    display: flex;
+}
+
+.editItemBtn {
+    margin-left: 0px;
+    margin-right: auto;
+    width: 10px;
+    height: 10px;
+    background-color: #0099ff;
+}
+
+.deleteItemBtn {
+    margin-right: 0px;
+    margin-left: auto;
+    width: 10px;
+    height: 10px;
+    background-color: #ff0000;
+}

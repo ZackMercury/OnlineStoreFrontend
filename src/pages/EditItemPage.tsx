@@ -1,6 +1,6 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { RootState } from "../app/store";
 import Joi from 'joi-browser';
 import axios from "axios";
@@ -14,16 +14,40 @@ export const newItemSchema = Joi.object({
     technicalDetails: Joi.object().pattern(Joi.string(), Joi.string())
 });
 
-export default function AddItemPage () { 
+export default function EditItemPage () { 
     const isAdmin = useSelector((state: RootState) => state.user.value.isAdmin);
     const alertBox = useRef<HTMLDivElement>(null);
     const imageInput = useRef<HTMLInputElement>(null);
+    const {itemID} = useParams();
 
     const [name, setName] = useState("");
     const [price, setPrice] = useState(0);
     const [description, setDescription] = useState("");
     const [category, setCategory] = useState("");
     const [technicalDetails, setTechnicalDetails] = useState("");
+    const [loading, setLoading] = useState(false);
+    const [wasItemFound, setWasItemFound] = useState(false);
+
+    const [itemData, setItemData] = useState<any>(null);
+
+    useEffect(()=>{
+        // Component did mount
+        // Let's load the current item info
+
+        setLoading(true);
+        axios.get(SERVER_LINK + "/item/" + itemID)
+        .then( (res) => {
+            setLoading(false);
+            setWasItemFound(true);
+
+            setItemData(res.data);
+        })
+        .catch( (err) => {
+            setLoading(false);
+            setWasItemFound(false);
+        })
+
+    }, []);
 
     const onHitSubmit = (e: React.MouseEvent<HTMLButtonElement>) => {
         e.preventDefault();
@@ -53,20 +77,20 @@ export default function AddItemPage () {
         formData.append("picture" , imageInput.current!.files![0]);
         for (const key in data) 
             formData.append(key, data[key]);
-        axios.post(SERVER_LINK + "/additem", formData);
+        axios.post(SERVER_LINK + "/edititem", formData);
     }
 
     return <div className="AddItemPage"> 
-        { isAdmin ? 
+        { isAdmin ? loading ? <>Loading...</> : !wasItemFound ? <>An error occured. The item was not found</> :
             <form>
                 <div className="form-group">
                     <label htmlFor="itemNameInput">Name</label>
-                    <input type="text"  onChange={(e) => setName(e.currentTarget.value)} className="form-control" id="itemNameInput" placeholder="Enter item name" />
+                    <input type="text" value={itemData.name} onChange={(e) => setName(e.currentTarget.value)} className="form-control" id="itemNameInput" placeholder="Enter item name" />
                 </div>
 
                 <div className="form-group">
                     <label htmlFor="itemPriceInput">Price</label>
-                    <input type="number"  onChange={(e) => setPrice(parseFloat(e.currentTarget.value))} className="form-control" id="itemPriceInput" placeholder="Enter item price" />
+                    <input type="text" value={itemData.price} onChange={(e) => setPrice(parseInt(e.currentTarget.value))} className="form-control" id="itemPriceInput" placeholder="Enter item price" />
                 </div>
 
                 <div className="form-group">
@@ -76,17 +100,17 @@ export default function AddItemPage () {
 
                 <div className="form-group">
                     <label htmlFor="itemCategoryInput">Category (separate by "&#62;")</label>
-                    <input type="text"  onChange={(e) => setCategory(e.currentTarget.value)} className="form-control" id="itemCategoryInput" placeholder="Household items > Bathroom (example)" />
+                    <input type="text" value={itemData.category.join(" > ")} onChange={(e) => setCategory(e.currentTarget.value)} className="form-control" id="itemCategoryInput" placeholder="Household items > Bathroom (example)" />
                 </div>
 
                 <div className="form-group">
                     <label htmlFor="descriptionArea">Item description</label>
-                    <textarea style={{height: "300px"}} onChange={(e) => setDescription(e.currentTarget.value)} className="form-control" id="descriptionArea" placeholder="Enter item description" />
+                    <textarea value={itemData.description} style={{height: "300px"}} onChange={(e) => setDescription(e.currentTarget.value)} className="form-control" id="descriptionArea" placeholder="Enter item description" />
                 </div>
 
                 <div className="form-group">
                     <label htmlFor="technicalDetailsArea">Item technical details (Split by line breaks). Syntax is Parameter: Value</label>
-                    <textarea style={{height: "300px"}} onChange={(e) => setTechnicalDetails(e.currentTarget.value)} className="form-control" id="technicalDetailsArea" placeholder="Color: Blue&#10;Height: 100cm&#10;..." />
+                    <textarea value={Object.keys(itemData.technicalDetails).map((key) => key + ": " + itemData.technicalDetails[key]).join("\n")} style={{height: "300px"}} onChange={(e) => setTechnicalDetails(e.currentTarget.value)} className="form-control" id="technicalDetailsArea" placeholder="Color: Blue&#10;Height: 100cm&#10;..." />
                 </div>
                 
                 <div ref={alertBox} className="alert alert-danger" role="alert" hidden></div>

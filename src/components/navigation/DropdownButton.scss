@@ -1,0 +1,34 @@
+.dropdownHost {
+    height: 25px;
+}
+
+.dropdownHost:hover > .dropdown {
+    display: inherit;
+}
+
+.dropdown {
+    z-index: 100;
+    display: none;
+    position: absolute;
+    top: 125px;
+}
+
+.dropdownTrigger {
+    display: inline-block;
+    height: 25px;
+}
+
+.dropdownOption {
+    display: block;
+    position: relative;
+    left: -10px;
+    width: 120px;
+    background-color: #353535;
+    height: 25px;
+    line-height: 25px;
+}
+
+.optionText {
+    margin-left: 5px;
+    margin-right: 5px;
+}

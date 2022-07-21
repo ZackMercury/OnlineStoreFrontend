@@ -6,3 +6,25 @@ body {
 .marginSides {
     margin: 0 50px;
 }
+
+.padded {
+    margin: 20px 50px;
+}
+
+.verticallyPadded {
+    margin: 10px 0;
+}
+
+.linkLike, .linkLike:active, .linkLike:focus {
+    background: none;
+	color: white;
+	border: none;
+	padding: 0;
+	font: inherit;
+	cursor: pointer;
+	outline: inherit;
+}
+
+hr {
+    margin: 0;
+}

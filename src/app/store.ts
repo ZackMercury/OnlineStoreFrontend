@@ -1,14 +1,16 @@
 import { configureStore } from "@reduxjs/toolkit";
 import categoryReducer from "../slices/categorySlice";
-import favoritesReducer from "../slices/favoritesSlice";
+import filterReducer from "../slices/filterSlice";
 import loadingReducer from "../slices/loadingSlice";
+import userReducer from "../slices/userSlice";
 
 
 export const store = configureStore({
     reducer: {
         loading: loadingReducer,
         category: categoryReducer,
-        favorites: favoritesReducer
+        filter: filterReducer,
+        user: userReducer
     }
 });
 

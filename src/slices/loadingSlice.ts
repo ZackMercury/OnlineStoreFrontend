@@ -2,7 +2,7 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 
 const initialState = {
-    value: false
+    value: true
 }
 
 export const loadingSlice = createSlice({
@@ -14,5 +14,7 @@ export const loadingSlice = createSlice({
         }
     }
 });
+
+export const { setLoading } = loadingSlice.actions;
 
 export default loadingSlice.reducer;

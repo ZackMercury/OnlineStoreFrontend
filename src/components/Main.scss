@@ -1,7 +1,8 @@
+$main : #f1e4e4;
 
 .Main {
     min-height: 100vh;
-    background-color: rgb(241, 228, 228);
+    background-color: $main;
     width: auto;
-    height: 1000px;
+    //height: 1000px;
 }

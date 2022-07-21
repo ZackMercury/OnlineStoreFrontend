@@ -5,21 +5,23 @@ const initialState:
 {
     value: string[]
 } = {
-    value: ["Household items", "Bathroom"]
+    value: ["All items"]
 }
 
-export const loadingSlice = createSlice({
+export const categorySlice = createSlice({
     name: "category",
     initialState,
     reducers: {
         enterInto: (state, action: PayloadAction<string>) => {
-            state.value.push(action.payload)
+            state.value.push(action.payload);
         },
 
-        setCategory: (state, action: PayloadAction<string[]>) => {
+        setCategory: (state, action: PayloadAction<typeof initialState.value>) => {
             state.value = action.payload;
         }
     }
 });
 
-export default loadingSlice.reducer;
+export const {enterInto, setCategory} = categorySlice.actions;
+
+export default categorySlice.reducer;
